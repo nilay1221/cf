@@ -635,7 +635,10 @@ export function buildCli(rawArgs: string[], options: BuildCliOptions = {}) {
 		.recommendCommands()
 		.version(version)
 		.alias("v", "version")
-		.epilogue("For more information, visit https://developers.cloudflare.com/")
+		.epilogue(
+			"For more information, visit https://developers.cloudflare.com/\n" +
+				"Env vars: https://github.com/cloudflare/cf/blob/main/ENVIRONMENT.md"
+		)
 		// Don't call process.exit on parse failures — surface as a thrown
 		// error so callers (bin/cf, dev.ts, tests) can handle it.
 		.exitProcess(false)

@@ -31,7 +31,10 @@ function builder(yargs: Argv<CommonYargsOptions>) {
 			type: "boolean",
 			default: true,
 			description: `Install cf as a project dependency (use --no-install to skip)`,
-		});
+		})
+		.epilogue(
+			"Migration guide: https://github.com/cloudflare/cf/blob/main/ENVIRONMENT.md"
+		);
 }
 
 type MigrateArgs = InferArgs<typeof builder>;

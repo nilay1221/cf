@@ -12,3 +12,6 @@ Install the open beta today globally and run it from anywhere:
 ```
 npm i -g cf
 ```
+
+See the [environment-variable reference](ENVIRONMENT.md) for supported settings,
+precedence, and Wrangler migration guidance.

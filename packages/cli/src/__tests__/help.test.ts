@@ -64,6 +64,19 @@ describe("help formatting", () => {
 		expect(help.indexOf("cf previews")).toBeLessThan(help.indexOf("cf r2"));
 	});
 
+	it("links the environment-variable reference from root and migration help", async () => {
+		const output = captureOutput();
+		const reference =
+			"https://github.com/cloudflare/cf/blob/main/ENVIRONMENT.md";
+
+		await runCf(["--help"]);
+		expect(output.stdout()).toContain(reference);
+
+		output.clear();
+		await runCf(["migrate", "--help"]);
+		expect(output.stdout()).toContain(`Migration guide: ${reference}`);
+	});
+
 	it.each([
 		["root", ["--help"]],
 		["group", ["zones", "--help"]],

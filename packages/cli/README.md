@@ -53,6 +53,13 @@ cf dev
 
 `cf deploy` builds by default and then uploads that output. `cf workers versions create` uploads a version without deploying it, and `cf workers triggers deploy` applies the configured routes and cron schedules. Pass `--prebuilt` to any of these commands to reuse existing Build Output.
 
+## Migrating from Wrangler
+
+Run `cf migrate [path]` to convert a Wrangler project to
+`cloudflare.config.ts`. Review the generated follow-ups and the
+[environment-variable migration guide](../../ENVIRONMENT.md#migrating-from-wrangler)
+for changes to credentials, account and zone selection, and modes.
+
 ## Local resources
 
 Add `--local` to a supported command to run it against a short-lived Miniflare instance backed by cf's persisted local state. Cold-state support includes KV key get/list/update/delete and bulk get, D1 raw plus D1 migration list/apply, and R2 object get/upload/list and array-body bulk delete. Some Durable Object and Workflow operations additionally require a compatible live registry peer that advertises their bindings. Use `--persist-to <directory>` to select a different state directory; it is valid only with `--local`. Commands with no local explorer equivalent return an error instead of falling through to production.
@@ -72,4 +79,5 @@ terminal.
 ## Documentation
 
 - [Cloudflare developer docs](https://developers.cloudflare.com/)
+- [cf environment variables](../../ENVIRONMENT.md)
 - [cf CLI telemetry](https://github.com/cloudflare/cf/blob/main/packages/cli/telemetry.md)
